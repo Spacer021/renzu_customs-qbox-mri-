@@ -4,13 +4,13 @@ Config.Locale = "en"
 Config.framework = 'QBCORE' -- FRAMEWORK! , "ESX", "QBCORE"
 Config.Mysql = 'mysql-async' -- "ghmattisql", "mysql-async", "oxmysql"
 Config.renzu_vehicleshopTable = false -- will use exports from vehicleshop vehicles table renzu_vehicleshop/vehicles.lua for pricing and other data.
-Config.usePopui = false -- POPUI or Drawmarker Floating Text https://github.com/renzuzu/renzu_popui
+Config.usePopui = true -- POPUI or Drawmarker Floating Text https://github.com/renzuzu/renzu_popui
 Config.showmarker = true -- Drawmarker and FLoating Text
 Config.DisableRepair = false -- Disable Repairing before Showing Upgrade Menu
 Config.OwnedVehiclesOnly = false -- set this to False if you want to allow modifying of non owned vehicles, AKA local cars, spawned cars
 Config.DoNotShowEmptyMods = true -- hide mod menu if no available mod for current vehicle
 --JOB
---Config.job = 'mechanic' -- Default job (job permission if job is not indicated here Config.Customs) -- OBSOLETE , Configure jobs here Config.Customs
+-- Config.job = 'mechanic' -- Default job (job permission if job is not indicated here Config.Customs) -- OBSOLETE , Configure jobs here Config.Customs
 Config.DefaultJobGradePermmission = 0 -- default jobgrade in each job shop (ignored if its indicated at Config.VehicleMod)
 Config.JobPermissionAll = true -- if this is true only mechanics can access even the upgrade menu (Main Menu)
 --JOB
@@ -68,32 +68,66 @@ Config.RepairCost = 1500 -- repair cost
 -- Can a single job can owned both/multiple shop? = yes
 Config.Customs = { -- Multiple Shop Start
 
-    ['Bennys'] = { -- Shop id -- Sample bennys (IPL coordinates) Change this to your liking (CHANGE COORDINATES IF CUSTOM BENNYS MAP)
+    ['Auto Exotic'] = { -- Shop id -- Sample bennys (IPL coordinates) Change this to your liking (CHANGE COORDINATES IF CUSTOM BENNYS MAP)
 		job = 'mechanic', -- job name permmision for this shop
 		min_grade = 0, -- min grade to access the whole shop feature
 		radius = 30, -- radius for whole shop
-		stockroom = {coord = vector4(-227.70811462402,-1322.9874267578,30.890409469604,90.902221679688), grade = 0}, -- vector 4 why the F is this vector4, x,y,z,w (heading)
-		paintmenu = {coord = vector3(-228.27142333984,-1333.4058837891,30.89038848877), grade = 0},
-		garage_inventory = {coord = vector4(-200.8703918457,-1317.6979980469,31.089340209961,267.89974975586), grade = 0},
-		shopcoord = vector4(-212.58630371094,-1325.0119628906,30.89038848877,157.28034973145),
+		stockroom = {coord = vec4(559.4, -193.08, 54.51, 232.74), grade = 0}, -- vector 4 why the F is this vector4, x,y,z,w (heading)
+		paintmenu = {coord = vec3(559.79, -198.31, 54.51), grade = 0},
+		garage_inventory = {coord = vec4(552.74, -187.21, 54.51, 272.82), grade = 0},
+		shopcoord = vec4(548.92, -186.85, 54.51, 6.16),
 		mod = {
-			{coord = vector4(-224.20236206055,-1329.8156738281,30.21583366394,87.278968811035), taken = false},
-			{coord = vector4(-213.22569274902,-1331.546875,30.215799331665,356.6969909668), taken = false},
+			{coord = vec4(554.49, -190.75, 54.51, 264.29), taken = false},
+			{coord = vec4(555.63, -183.46, 54.51, 77.33), taken = false},
+			{coord = vec4(554.45, -175.25, 54.51, 277.94), taken = false},
 		},
 		Blips = {sprite = 446, color = 68, scale = 0.8},
     },
 
-	['Custom Garage'] = { -- Shop id -- Custom Map Tuner Garage (2372 Build only, canary and release) IPL and Int https://forum.cfx.re/t/free-mlo-tuner-auto-shop/4247145
-		job = 'police', -- job name permmision for this shop
+	['corridas'] = { -- Shop id -- Sample bennys (IPL coordinates) Change this to your liking (CHANGE COORDINATES IF CUSTOM BENNYS MAP)
+	job = 'mechanic', -- job name permmision for this shop
+	min_grade = 0, -- min grade to access the whole shop feature
+	radius = 30, -- radius for whole shop
+	stockroom = {coord = vec4(14865.18, -3158.67, 312.03, 180.49), grade = 0}, -- vector 4 why the F is this vector4, x,y,z,w (heading)
+	paintmenu = {coord = vec3(559.79, -198.41, 55.51), grade = 0},
+	garage_inventory = {coord = vec4(14865.18, -3158.67, 312.03, 180.49), grade = 0},
+	shopcoord = vec4(14865.18, -3158.67, 312.03, 180.49),
+	mod = {
+		{coord = vec4(14865.18, -3158.67, 312.03, 180.49), taken = false},
+		{coord = vec4(14865.1, -3170.43, 312.03, 179.13), taken = false},
+		{coord = vec4(14865.21, -3183.52, 312.03, 181.82), taken = false},
+	},
+	Blips = {sprite = 446, color = 68, scale = 0.8},
+},
+
+	-- ['Custom Garage'] = { -- Shop id -- Custom Map Tuner Garage (2372 Build only, canary and release) IPL and Int https://forum.cfx.re/t/free-mlo-tuner-auto-shop/4247145
+	-- 	job = 'police', -- job name permmision for this shop
+	-- 	min_grade = 0, -- min grade to access the whole shop feature
+	-- 	radius = 30, -- radius for whole shop
+	-- 	stockroom = {coord = vector4(818.46160888672,-969.87396240234,26.10876083374,269.27597045898), grade = 0},
+	-- 	paintmenu = {coord = vector3(809.76037597656,-959.36596679688,26.10876083374), grade = 0},
+	-- 	garage_inventory = {coord = vector4(807.99078369141,-979.44848632812,26.308683395386,165.16065979004), grade = 0},
+	-- 	shopcoord = vector4(818.54309082031,-953.44543457031,26.108730316162,305.57107543945),
+	-- 	mod = {
+	-- 		{coord = vector4(823.82153320312,-944.92102050781,25.440004348755,94.50008392334), taken = false},
+	-- 		{coord = vector4(830.01727294922,-953.10614013672,25.440238952637,97.936683654785), taken = false},
+	-- 	},
+	-- 	Blips = {sprite = 446, color = 68, scale = 0.8},
+    -- },
+
+	['Redline Fenix'] = { -- Shop id -- Sample bennys (IPL coordinates) Change this to your liking (CHANGE COORDINATES IF CUSTOM BENNYS MAP)
+		job = 'mechanic', -- job name permmision for this shop
 		min_grade = 0, -- min grade to access the whole shop feature
 		radius = 30, -- radius for whole shop
-		stockroom = {coord = vector4(818.46160888672,-969.87396240234,26.10876083374,269.27597045898), grade = 0},
-		paintmenu = {coord = vector3(809.76037597656,-959.36596679688,26.10876083374), grade = 0},
-		garage_inventory = {coord = vector4(807.99078369141,-979.44848632812,26.308683395386,165.16065979004), grade = 0},
-		shopcoord = vector4(818.54309082031,-953.44543457031,26.108730316162,305.57107543945),
+		stockroom = {coord = vec4(2742.36, 3487.85, 55.26, 236.76), grade = 0}, -- vector 4 why the F is this vector4, x,y,z,w (heading)
+		paintmenu = {coord = vec3(2738.94, 3497.12, 55.26), grade = 0},
+		garage_inventory = {coord = vec4(2742.36, 3487.85, 55.26, 236.76), grade = 0},
+		shopcoord = vec4(2742.36, 3487.85, 55.26, 236.76),
 		mod = {
-			{coord = vector4(823.82153320312,-944.92102050781,25.440004348755,94.50008392334), taken = false},
-			{coord = vector4(830.01727294922,-953.10614013672,25.440238952637,97.936683654785), taken = false},
+			{coord = vec4(2740.5, 3492.32, 55.31, 337.2), taken = false},
+			{coord = vec4(2733.84, 3495.12, 55.31, 336.19), taken = false},
+			{coord = vec4(2725.25, 3498.66, 55.31, 333.45), taken = false},
+			{coord = vec4(2717.19, 3501.85, 55.3, 343.42), taken = false},
 		},
 		Blips = {sprite = 446, color = 68, scale = 0.8},
     },
